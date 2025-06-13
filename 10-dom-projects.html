@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Projects</title>
+    <style>
+        .subscribe-button{
+            border: none;
+            background-color: black;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;    
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .is-subscribed{
+            background-color: rgb(240,240,240);
+            color: black;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <p>YouTube Subscribe Button</p>
+    <!-- Two Class Names na 
+        1. js-subscribe-button
+        2. subscribe-button
+    -->
+    <button onclick="Subscribe()" class="js-subscribe-button subscribe-button">Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input class="js-cost-input" placeholder="Cost of order" onkeydown="handleCostKeydown(event)">
+    <button onclick="CalculateShipping()"
+    
+    >Calculate</button>
+    <p class="js-total-cost"></p>
+    <script>
+       console.log(window.document)
+       function Subscribe()
+       {
+            const buttonElement = document.querySelector('.js-subscribe-button')
+            if(buttonElement.innerText === 'Subscribe')
+            {
+                buttonElement.innerHTML = 'Subscribed'
+                buttonElement.classList.add('is-subscribed');
+                // will add another class name named "is-subscribed"
+            }
+            else
+            {
+                buttonElement.innerHTML = 'Subscribe'
+                buttonElement.classList.remove('is-subscribed');
+                // will remove the class named "is-subscribed"
+            }
+       }
+       function handleCostKeydown(event)
+       {
+            if(event.key === 'Enter')
+            {
+                CalculateShipping();
+            }
+       }
+       function CalculateShipping()
+       {
+            const inputElement = document.querySelector('.js-cost-input');
+            let cost = Number(inputElement.value);
+
+            cost = cost < 40 ? cost + 10 : cost;
+            document.querySelector('.js-total-cost').innerHTML = cost;
+       }
+       // 6:57:49
+    </script>
+</body>
+</html>

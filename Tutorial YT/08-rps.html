@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Rock Paper Scissors Function</title>
+</head>
+<body>
+<p>Objects Rock Paper Scissors</p>
+<button onclick="validateWinner('Rock')">
+    Rock
+</button>
+<button onclick="validateWinner('Paper')">
+    Paper
+</button>
+
+<button onclick="validateWinner('Scissors')">
+    Scissors
+</button>
+
+<button onclick="resetScores()">
+    Reset Score
+</button>
+    <script>
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0, loses: 0, ties: 0
+        };
+        /*        
+        if(!score)
+        {
+            score = {
+                wins: 0,
+                loses: 0,
+                ties: 0
+            }
+        }
+            */
+       // localStorage.getItem('score'); // it gets the data the you saved
+       
+       // console.log(localStorage.getItem('score'));
+       function resetScores()
+       {
+            score.wins = 0;
+            score.loses = 0;
+            score.ties = 0;
+            localStorage.removeItem('score');
+            alert(`Scores reset to 0
+Wins: 0, Loses: 0, Ties: 0`);
+       }
+       function validateWinner(playerMove)
+       {
+            let computerMove = pickCompMove();
+            const winningComb = 
+            {
+                'Scissors' : 
+                {
+                    'Rock' : false,
+                    'Paper' : true
+                },
+                'Paper' : 
+                {
+                    'Scissors' : false,
+                    'Rock' : true
+                },
+                'Rock' : 
+                {
+                    'Scissors' : true,
+                    'Paper' : false
+                }
+            }
+            let result = winningComb[playerMove][computerMove];
+            if(result === true)
+            {
+                ++score.wins;
+                result = "You Win."
+            }
+            else if(result === false)
+            {
+                ++score.loses;
+                result = "You Lose."
+            }
+            else
+            {
+                ++score.ties;
+                result = "Tie."
+            }
+            // only supports string
+            localStorage.setItem('score', JSON.stringify(score)) // it sets what you want to save data even if the website is refreshed
+            alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
+            Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
+        }
+        function pickCompMove()
+        {
+            var randomNumber = Math.random();
+            let computerMove = '';
+            if(randomNumber >= 0 && randomNumber < 1/3)
+            {
+                computerMove = 'Rock'
+            }
+            else if(randomNumber >= 1/3 && randomNumber < 2/3)
+            {
+                computerMove = 'Paper'
+            }
+            else
+            {
+                computerMove = 'Scissors'
+            }
+            return computerMove;
+        }
+    
+    </script>
+</body>
+</html> 

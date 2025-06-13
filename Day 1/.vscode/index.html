@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Website Example</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JavaScript Mo  </h1>
+        
+        <!-- Real-time Clock -->
+        <div class="section">
+            <h2>📅 Live Clock</h2>
+            <div id="clock"></div>
+        </div>
+        
+        <!-- Interactive Calculator -->
+        <div class="section">
+            <h2>🧮 Simple Calculator</h2>
+            <input type="number" id="num1" placeholder="First number">
+            <input type="number" id="num2" placeholder="Second number">
+            <br>
+            <button onclick="calculate('add')">Add (+)</button>
+            <button onclick="calculate('subtract')">Subtract (-)</button>
+            <button onclick="calculate('multiply')">Multiply (×)</button>
+            <button onclick="calculate('divide')">Divide (÷)</button>
+            <div class="result" id="calcResult">Result will appear here</div>
+        </div>
+        
+        <!-- Dynamic Content -->
+        <div class="section">
+            <h2>🎨 Dynamic Content</h2>
+            <button onclick="changeContent()">Change Text</button>
+            <button onclick="changeColor()">Change Background</button>
+            <button onclick="addElement()">Add New Element</button>
+            <div class="result" id="dynamicContent">Click the buttons to see changes!</div>
+        </div>
+        
+        <!-- Simple To-Do List -->
+        <div class="section">
+            <h2>📝 To-Do List</h2>
+            <input type="text" id="todoInput" placeholder="Enter a task...">
+            <button onclick="addTodo()">Add Task</button>
+            <div id="todoList"></div>
+        </div>
+        
+        <!-- Form Validation -->
+        <div class="section">
+            <h2>✅ Form Validation</h2>
+            <input type="text" id="nameInput" placeholder="Enter your name">
+            <input type="email" id="emailInput" placeholder="Enter your email">
+            <textarea id="messageInput" placeholder="Enter your message"></textarea>
+            <button onclick="validateForm()">Submit</button>
+            <div class="result" id="formResult"></div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file - IMPORTANT: Put this at the bottom! -->
+    <script type="module" src="script.js">
+        import { changeColor } from './script.js';
+
+    </script>
+</body>
+</html>
