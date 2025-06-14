@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 Projects</title>
     <style>
+        body{
+            font-family: Arial;
+        }
+
         .subscribe-button{
             border: none;
             background-color: black;
@@ -16,10 +20,30 @@
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
+            margin-bottom: 30px;
         }
         .is-subscribed{
             background-color: rgb(240,240,240);
             color: black;
+        }
+
+        .cost-input{
+            font-size: 15px;
+            /*
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            */
+            padding: 10px;
+        }
+        .calculate-button{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 12px 15px; /* first value is vertical and second value is horizontal*/
+            cursor: pointer;
         }
 
     </style>
@@ -38,9 +62,10 @@
     <p>Amazon Shipping Calculator</p>
     <p>Orders under $40 = +$10 shipping.</p>
     <p>Orders over $40 = FREE shipping.</p>
-    <input class="js-cost-input" placeholder="Cost of order" onkeydown="handleCostKeydown(event)">
+    <input class="js-cost-input cost-input" 
+        placeholder="Cost of order" onkeydown="handleCostKeydown(event)">
     <button onclick="CalculateShipping()"
-    
+        class="calculate-button"
     >Calculate</button>
     <p class="js-total-cost"></p>
     <script>

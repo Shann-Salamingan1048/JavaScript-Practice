@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Rock Paper Scissors Function</title>
+</head>
+<body>
+<p>DOM Rock Paper Scissors</p>
+<button onclick="validateWinner('Rock')">
+    Rock
+</button>
+<button onclick="validateWinner('Paper')">
+    Paper
+</button>
+
+<button onclick="validateWinner('Scissors')">
+    Scissors
+</button>
+<p class="js-score">
+</p>
+<p class="js-result">
+    Not Yet Started
+</p>
+<p class="js-moves">
+   You Unknown - Unknown Computer 
+</p>
+<button onclick="resetScores()">
+    Reset Score
+</button>
+    <script>
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0, loses: 0, ties: 0
+        };
+        function updateResult(result)
+        {
+            document.querySelector('.js-result').innerHTML = result;
+        }
+        function updateChosenMoves(playerMove, compMove)
+        {
+            document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${compMove} Computer`;
+        }
+        function updateScoreDisplay() 
+        {
+            document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+        }
+        updateScoreDisplay();
+    
+       function resetScores()
+       {
+            score.wins = 0;
+            score.loses = 0;
+            score.ties = 0;
+            localStorage.removeItem('score');
+            updateScoreDisplay();
+            updateResult('Not Yet Started');
+            updateChosenMoves('Unknown', 'Unknown');
+       }
+       function validateWinner(playerMove)
+       {
+            let computerMove = pickCompMove();
+            const winningComb = 
+            {
+                'Scissors' : 
+                {
+                    'Rock' : false,
+                    'Paper' : true
+                },
+                'Paper' : 
+                {
+                    'Scissors' : false,
+                    'Rock' : true
+                },
+                'Rock' : 
+                {
+                    'Scissors' : true,
+                    'Paper' : false
+                }
+            }
+            let result = winningComb[playerMove][computerMove];
+            if(result === true)
+            {
+                ++score.wins;
+                result = "You Win."
+            }
+            else if(result === false)
+            {
+                ++score.loses;
+                result = "You Lose."
+            }
+            else
+            {
+                ++score.ties;
+                result = "Tie."
+            }
+            // only supports string
+            localStorage.setItem('score', JSON.stringify(score)) // it sets what you want to save data even if the website is refreshed
+            updateResult(result)
+            updateChosenMoves(playerMove, computerMove)
+            updateScoreDisplay();
+        }
+        function pickCompMove()
+        {
+            const moves = ['Rock', 'Paper', 'Scissors'];
+            return moves[Math.floor(Math.random() * moves.length)];
+        }
+    
+    </script>
+</body>
+</html> 
