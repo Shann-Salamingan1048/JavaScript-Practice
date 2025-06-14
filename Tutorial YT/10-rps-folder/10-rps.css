@@ -1,0 +1,38 @@
+body {
+  /*base*/
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: Arial;
+} /*overriden*/
+.title-p {
+  font-size: 30px;
+  font-weight: bold;
+}
+.move-icon {
+  height: 50px;
+}
+.move-button {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.result-p {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.score-p {
+  margin-top: 60px;
+}
+.reset-btn {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  padding: 8px 15px;
+}
