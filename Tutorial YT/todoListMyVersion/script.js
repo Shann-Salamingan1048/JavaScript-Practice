@@ -16,7 +16,7 @@ function renderTodoList()
                 <div>${name}</div>
                 <div>${date}</div>
                 <button onclick="
-                    todoList.splice(${i}, 1);
+                    todoList.splice(${i}, 1);   // it gets deleted or remove when clicked the specific button
                     renderTodoList();
                 " class="css-delete-btn">Delete</button>
             </div>
@@ -41,4 +41,5 @@ function addTodo()
     todoRaw.value = ''; // clear the todo list enter
 
     renderTodoList();
+    // Advanced Functions
 }
