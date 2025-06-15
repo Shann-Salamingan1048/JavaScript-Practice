@@ -8,19 +8,21 @@ const todoList = [{
 
 renderTodoList();
 
+document.querySelector('.js-add-btn').addEventListener('click',
+  () => {
+    addTodo();
+  }
+);
+
 function renderTodoList() {
   let todoListHTML = '';
 
-  todoList.forEach(
-    function({name, dueDate}, i)
+  todoList.forEach(({name, dueDate}, i) =>
     {
       const html = `
       <div>${name}</div>
       <div>${dueDate}</div>
-      <button onclick="
-        todoList.splice(${i}, 1);
-        renderTodoList();
-      " class="delete-todo-button">Delete</button> 
+      <button class="delete-todo-button js-delete-btn">Delete</button> 
       `;
       todoListHTML += html;
     }
@@ -28,6 +30,18 @@ function renderTodoList() {
 
   document.querySelector('.js-todo-list')
     .innerHTML = todoListHTML;
+
+  document.querySelectorAll('.js-delete-btn')
+  .forEach((deleteButton, i ) =>
+  {
+    deleteButton.addEventListener('click', () =>
+    {
+      todoList.splice(i, 1); // it gets deleted or remove when clicked the specific button
+      renderTodoList();
+    });
+  });
+  // querySelectorAll return all elemenets the same class name, 
+  // while querySelector is only one or the first name of the same class name
 }
 
 function addTodo() 

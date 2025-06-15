@@ -5,6 +5,35 @@ let score = JSON.parse(localStorage.getItem("score")) ||
   ties: 0,
 };
 const moves = ["rock", "paper", "scissors"];
+const rockBtnElement = document.querySelector('.js-rock-btn');
+const paperBtnElement = document.querySelector('.js-paper-btn');
+const scissorsBtnElement = document.querySelector('.js-scissors-btn');
+
+const autoPlayElement = document.querySelector('.js-auto-play-btn');
+const resetScoreElement = document.querySelector('.js-reset-btn');
+
+
+const playEventListner = (move) =>
+{
+    return () => validateWinner(move);
+}
+rockBtnElement.addEventListener('click', playEventListner('rock'));
+paperBtnElement.addEventListener('click', playEventListner('paper'));
+scissorsBtnElement.addEventListener('click', playEventListner('scissors'));
+autoPlayElement.addEventListener('click', autoPlay); 
+resetScoreElement.addEventListener('click',  resetScores)
+
+document.body.addEventListener('keydown', (event) =>
+{
+    const keys = {
+      'r' : 'rock',
+      'p' : 'paper',
+      's' : 'scissors'
+    };
+    if(event.key === 'r' || event.key === 'p' || event.key === 's')
+        validateWinner(keys[event.key]);
+});
+
 function updateResult(result) 
 {
   document.querySelector(".js-result").innerHTML = result;
@@ -37,17 +66,17 @@ function validateWinner(playerMove)
 {
   let computerMove = pickCompMove();
   const winningComb = {
-    scissors: {
-      rock: false,
-      paper: true,
+    'scissors': {
+      'rock': false,
+      'paper': true,
     },
-    paper: {
-      scissors: false,
-      rock: true,
+    'paper': {
+      'scissors': false,
+      'rock': true,
     },
-    rock: {
-      scissors: true,
-      paper: false,
+    'rock': {
+      'scissors': true,
+      'paper': false,
     },
   };
   let result = winningComb[playerMove][computerMove];
@@ -97,7 +126,7 @@ function autoPlay()
     */
     if(!isAutoPlaying)
     {
-        intervalID = setInterval(function()
+        intervalID = setInterval(() =>
         {
             const playerMove = pickCompMove();
             validateWinner(playerMove);
