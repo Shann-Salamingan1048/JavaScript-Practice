@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles/btns.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display-grid">
+            <input type="text" id="display" disabled value="0" />
+        </div>
+
+        <div class="grid-row">
+            <button class="btn btn-C js-C">C</button>
+            <button class="btn btn-% js-percent">%</button>
+            <button class="btn btn-DEL js-DEL">DEL</button>
+            <button class="btn btn-/ js-divide">/</button>        
+        </div>
+
+        <div class="grid-row">
+            <button class="btn btn-7 js-7">7</button>
+            <button class="btn btn-8 js-8">8</button>
+            <button class="btn btn-9 js-9">9</button>
+            <button class="btn btn-x js-x">x</button>
+        </div>
+
+        <div class="grid-row">
+            <button class="btn btn-4 js-4">4</button>
+            <button class="btn btn-5 js-5">5</button>
+            <button class="btn btn-6 js-6">6</button>
+            <button class="btn btn-- js--">-</button>
+        </div>
+
+        <div class="grid-row">
+            <button class="btn btn-1 js-1">1</button>
+            <button class="btn btn-2 js-2">2</button>
+            <button class="btn btn-3 js-3">3</button>
+            <button class="btn btn-+ js-plus">+</button>
+        </div>
+
+        <div class="grid-row">
+            <button class="btn btn-x10 js-x10">x10</button>
+            <button class="btn btn-0 js-0">0</button>
+            <button class="btn btn-. js-point">.</button>
+            <button class="btn btn-= js-equal">=</button>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/Calculator.js"></script>
+</body>
+</html>
